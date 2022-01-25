@@ -1,0 +1,15 @@
+# Maplefile for Hypre
+
+# Name of the base image
+base="ubuntu"
+
+# Name of the local container
+container="hypre"
+
+# Container backend
+backend="docker"
+
+# Default commands for execute
+execute=["./configure --enable-fortran --enable-shared --prefix=/home/lib/hypre CC=mpicc CXX=mpicxx FF=mpif90",
+         "make install && make clean && make distclean",
+         "echo /home/lib/hypre/lib >> /etc/ld.so.conf.d/libc.conf && ldconfig -v"]                  
